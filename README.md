@@ -3,10 +3,10 @@
 A full-stack Kanban-style task manager with JWT authentication.
 
 ## Tech Stack
-- Frontend: React, TypeScript, Tailwind CSS, Axios
+- Frontend: React, TypeScript, Tailwind CSS, Axios, TanStack Start (SSR)
 - Backend: Node.js, Express, MongoDB (Mongoose)
 - Auth: JWT stored in localStorage
-- Deployment: Frontend → Vercel | Backend → Render
+- Deployment: Frontend → Netlify | Backend → Render
 
 ## Local Setup
 
@@ -39,9 +39,27 @@ JWT_SECRET=your_secret_key
 VITE_API_URL=http://localhost:5000
 ```
 
+## Deployment
+
+### Frontend (Netlify)
+1. Link your GitHub repository to a new site on Netlify.
+2. The site configuration will be automatically loaded from `netlify.toml`:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist/client`
+3. Add the following **Environment Variable** in the Netlify Dashboard (Site settings -> Environment variables):
+   - `VITE_API_URL` = `https://task-manager1-3ze7.onrender.com`
+
+### Backend (Render)
+1. Create a Web Service on Render linking your GitHub repository.
+2. Configure:
+   - **Root Directory:** `server`
+   - **Build Command:** `npm install`
+   - **Start Command:** `node index.js`
+3. Add environment variables for `MONGO_URI` and `JWT_SECRET`.
+
 ## Live Links
-- Frontend: https://your-app.vercel.app
-- Backend:  https://your-app.onrender.com
+- Frontend: Netlify App URL (to be provisioned)
+- Backend:  https://task-manager1-3ze7.onrender.com
 
 ## Assumptions & Tradeoffs
 - JWT in localStorage: simple approach, sufficient for this scope
